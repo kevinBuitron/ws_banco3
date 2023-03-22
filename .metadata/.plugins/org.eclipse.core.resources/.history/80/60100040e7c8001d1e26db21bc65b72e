@@ -1,0 +1,101 @@
+package co.edu.uniquindio.model;
+
+import java.util.ArrayList;
+
+public class Cuenta {
+	private double saldo;
+	private String numero;
+	private Cliente clienteTitular;
+	private ArrayList<Beneficiario> listaBeneficiario;
+	private TipoCuenta tipo;
+
+	public Cuenta() {
+		super();
+	}
+	public Cuenta(double saldo, String numero, Cliente clienteTitular, TipoCuenta tipo) {
+		super();
+		this.saldo = saldo;
+		this.numero = numero;
+		this.clienteTitular = clienteTitular;
+		this.tipo = tipo;
+	}
+	public double getSaldo() {
+		return saldo;
+	}
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+	public String getNumero() {
+		return numero;
+	}
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+	public Cliente getClienteTitular() {
+		return clienteTitular;
+	}
+	public void setClienteTitular(Cliente clienteTitular) {
+		this.clienteTitular = clienteTitular;
+	}
+	public Beneficiario getListaBeneficiario() {
+		return listaBeneficiario;
+	}
+	public void setListaBeneficiario(Beneficiario listaBeneficiario) {
+		this.listaBeneficiario = listaBeneficiario;
+	}
+	public TipoCuenta getTipo() {
+		return tipo;
+	}
+	public void setTipo(TipoCuenta tipo) {
+		this.tipo = tipo;
+	}
+
+	public double depositarDinero(double dinero){
+		this.saldo += dinero;
+		return saldo;
+	}
+
+	public double consultarSaldo(){
+		return saldo;
+	}
+
+	public double retirarDinero(double dinero)throws Exception{
+
+		double aux = saldo - dinero;
+
+		if(aux < 0){
+			throw new Exception("Su saldo no tiene los fondos suficientes para el retiro");
+		}
+
+		this.saldo = aux;
+		return saldo;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cuenta other = (Cuenta) obj;
+		if (numero == null) {
+			if (other.numero != null)
+				return false;
+		} else if (!numero.equals(other.numero))
+			return false;
+		return true;
+	}
+
+
+
+
+}

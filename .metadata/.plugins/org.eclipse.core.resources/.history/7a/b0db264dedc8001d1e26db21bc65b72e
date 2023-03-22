@@ -1,0 +1,40 @@
+package co.edu.co.test;
+
+import co.edu.uniquindio.model.Banco;
+import co.edu.uniquindio.model.Cliente;
+import co.edu.uniquindio.model.Cuenta;
+import co.edu.uniquindio.model.TipoCuenta;
+
+public class Test {
+
+	public static void main (String []args){
+		try{
+			Banco banco = new Banco ("bancolombia");
+			Cliente cliente1 = new Cliente("kevin", "buitron", "1058962116");
+			Cliente cliente2 = new Cliente("pepito", "perez", "123");
+
+			String mensajeCLiente1 = banco.crearCliente(cliente1);
+			String mensajeCLiente2 = banco.crearCliente(cliente2);
+
+			System.out.println(mensajeCLiente1);
+			System.out.println(mensajeCLiente2);
+
+			String mensajeCuenta1 = banco.crearCuenta("1058962116", "771", TipoCuenta.AHORROS);
+			String mensajeCuenta2 = banco.crearCuenta("123", "775", TipoCuenta.AHORROS);
+
+			System.out.println(mensajeCuenta1);
+			System.out.println(mensajeCuenta2);
+
+			banco.depositarDinero("771", 120000);
+			banco.depositarDinero("771", 120000);
+
+			double nuevoSaldo = banco.retirarDinero("771", 40000);
+
+			System.out.println(nuevoSaldo);
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

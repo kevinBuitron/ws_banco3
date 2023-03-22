@@ -1,0 +1,26 @@
+package co.edu.co.test;
+
+import co.edu.uniquindio.model.Banco;
+import co.edu.uniquindio.model.Cliente;
+import co.edu.uniquindio.model.Cuenta;
+import co.edu.uniquindio.model.TipoCuenta;
+
+public class Test {
+
+	public static void main (String []args){
+		Banco banco = new Banco ("bancolombia");
+		Cliente cliente1 = new Cliente("kevin", "buitron", "1058962116");
+
+		banco.crearCuenta("1058962116", "771", TipoCuenta.AHORROS);
+
+		// imprimir atributos de una cuenta
+		System.out.println("Titular: " + cliente1.getNombre());
+		System.out.println("Número de cuenta: " + cuenta.getNumero());
+		System.out.println("Saldo: " + cuenta.getSaldo());
+
+
+
+
+	}
+
+}
